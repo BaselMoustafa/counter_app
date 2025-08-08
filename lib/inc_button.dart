@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 class IncButton extends StatelessWidget {
   const IncButton({
     super.key,
-    required this.onPressed,
+    required this.counterNotifier,
   });
 
-  final void Function() onPressed;
+  final ValueNotifier<int>counterNotifier;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: (){
+        counterNotifier.value = counterNotifier.value +1;
+      },
       child: Text("Increament"),
     );
   }

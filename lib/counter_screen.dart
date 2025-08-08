@@ -1,3 +1,4 @@
+import 'package:counter_app/counter_text.dart';
 import 'package:counter_app/dec_button.dart';
 import 'package:counter_app/inc_button.dart';
 import 'package:counter_app/reset_button.dart';
@@ -12,9 +13,12 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> {
   int counter = 0;
+  
+  ValueNotifier<int> counterNotifier = ValueNotifier(0);
 
   @override
   Widget build(BuildContext context) {
+    print("Build Of Scrennnn=========");
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -31,13 +35,7 @@ class _CounterScreenState extends State<CounterScreen> {
           children: [
             Spacer(),
 
-            Text(
-              counter.toString(),
-              style: TextStyle(
-                fontSize: 60,
-                fontWeight: FontWeight.bold
-              ),
-            ),
+            CounterText(counterNotifier: counterNotifier),
 
             Spacer(),
       
@@ -50,33 +48,15 @@ class _CounterScreenState extends State<CounterScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   DecButton(
-                    onPressed: () {
-                      if (counter==0) {
-                        return ;
-                      }
-                      counter--;
-                      setState(() {
-                        
-                      });
-                    },
+                    counterNotifier: counterNotifier,
                   ),
               
                   ResetButton(
-                    onPressed: () {
-                      counter = 0;
-                      setState(() {
-                        
-                      });
-                    },
+                    counterNotifier: counterNotifier,
                   ),
               
                   IncButton(
-                    onPressed: (){
-                    counter = counter +1;
-                    setState(() {
-                      
-                    });
-                  },
+                    counterNotifier: counterNotifier,
                   ),
                 ],
               ),

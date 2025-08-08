@@ -3,15 +3,20 @@ import 'package:flutter/material.dart';
 class DecButton extends StatelessWidget {
   const DecButton({
     super.key,
-    required this.onPressed,
+    required this.counterNotifier,
   });
 
-  final void Function() onPressed;
+  final ValueNotifier<int> counterNotifier;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: (){
+         if (counterNotifier.value==0) {
+          return ;
+        }
+        counterNotifier.value = counterNotifier.value-1;
+      },
       child: Text("Decreament"),
     );
   }

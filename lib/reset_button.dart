@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class ResetButton extends StatelessWidget {
-  const ResetButton({super.key, required this.onPressed});
+  const ResetButton({super.key, required this.counterNotifier});
 
-  final VoidCallback onPressed;
+  final ValueNotifier<int> counterNotifier;
 
   @override
 
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed:onPressed,
+      onPressed: (){
+        counterNotifier.value = 0;
+      },
       child: Text("Reset"),
     );
   }
