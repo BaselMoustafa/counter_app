@@ -1,3 +1,6 @@
+import 'package:counter_app/dec_button.dart';
+import 'package:counter_app/inc_button.dart';
+import 'package:counter_app/reset_button.dart';
 import 'package:flutter/material.dart';
 
 class CounterScreen extends StatefulWidget {
@@ -46,39 +49,34 @@ class _CounterScreenState extends State<CounterScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ElevatedButton(
-                    onPressed:(){
+                  DecButton(
+                    onPressed: () {
                       if (counter==0) {
                         return ;
                       }
-                      counter = counter-1;
+                      counter--;
                       setState(() {
                         
                       });
-                     
-                    } ,
-                    child: Text("Decreament"),
+                    },
                   ),
               
-                  ElevatedButton(
-                    onPressed:(){
+                  ResetButton(
+                    onPressed: () {
                       counter = 0;
                       setState(() {
                         
                       });
-
-                    } ,
-                    child: Text("Reset"),
+                    },
                   ),
               
-                  ElevatedButton(
-                    onPressed:(){
-                      counter = counter +1;
-                      setState(() {
-                        
-                      });
-                    } ,
-                    child: Text("Increament"),
+                  IncButton(
+                    onPressed: (){
+                    counter = counter +1;
+                    setState(() {
+                      
+                    });
+                  },
                   ),
                 ],
               ),
